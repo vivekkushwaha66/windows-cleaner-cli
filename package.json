@@ -1,0 +1,65 @@
+{
+  "name": "@vivekkushwaha66/windows-cleaner-cli",
+  "version": "0.0.1-beta",
+  "description": "A safe, interactive, and high-performance Windows disk cleaner CLI built with TypeScript.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "bin": {
+    "winclean": "./dist/bin.js",
+    "windows-cleaner": "./dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build",
+    "start": "node dist/bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekkushwaha66/windows-cleaner-cli.git"
+  },
+  "homepage": "https://github.com/vivekkushwaha66/windows-cleaner-cli#readme",
+  "bugs": {
+    "url": "https://github.com/vivekkushwaha66/windows-cleaner-cli/issues"
+  },
+  "keywords": [
+    "windows",
+    "cleanup",
+    "disk-cleaner",
+    "cli",
+    "cache-cleaner",
+    "temp-files",
+    "performance"
+  ],
+  "author": "Vivek Kushwaha",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.3.2",
+    "chalk": "^5.4.1",
+    "cli-progress": "^3.12.0",
+    "cli-table3": "^0.6.5",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.5",
+    "@types/node": "^22.13.0",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

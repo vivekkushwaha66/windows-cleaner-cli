@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Cleaner CLI (winclean) — Safe, Interactive Windows Disk Cleaner</title>
+  <meta name="description" content="A safe, interactive, high-performance Windows disk cleaner CLI built with TypeScript. Reclaim gigabytes of wasted space without risking personal files.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="brand">
+        <div class="brand-icon">🧹</div>
+        <span>winclean</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#quickstart">Quick Start</a>
+        <a href="#targets">Targets</a>
+        <a href="#safety">Safety</a>
+        <a href="https://github.com/vivekkushwaha66/windows-cleaner-cli" target="_blank" class="btn-github">
+          <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Non-Node.js User Alert Banner -->
+    <section class="node-alert-banner" id="prerequisite-alert">
+      <div class="alert-content">
+        <div class="alert-icon">⚠️</div>
+        <div>
+          <div class="alert-title">Requires Node.js 18+ to run</div>
+          <div class="alert-desc">Don't have Node.js installed? Install it directly in 10 seconds via Windows Package Manager:</div>
+        </div>
+      </div>
+      <div class="winget-badge" data-clipboard="winget install OpenJS.NodeJS.LTS" title="Click to copy winget command">
+        <span>📋 winget install OpenJS.NodeJS.LTS</span>
+      </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="badge-pill">🛡️ Safe by Design &bull; Open Source &bull; TypeScript</div>
+      <h1>High-Performance Windows Disk Cleanup CLI</h1>
+      <p>
+        Reclaim gigabytes of wasted space from temp directories, package manager caches, crash dumps, and build artifacts without risking personal files.
+      </p>
+
+      <div class="cta-group" id="quickstart">
+        <div class="cmd-box">
+          <span class="cmd-prefix">$</span>
+          <span>npx @vivekkushwaha66/windows-cleaner-cli scan</span>
+          <button class="btn-copy" data-clipboard="npx @vivekkushwaha66/windows-cleaner-cli scan" title="Copy command">📋</button>
+        </div>
+        <div class="cmd-box">
+          <span class="cmd-prefix">$</span>
+          <span>npm install -g @vivekkushwaha66/windows-cleaner-cli</span>
+          <button class="btn-copy" data-clipboard="npm install -g @vivekkushwaha66/windows-cleaner-cli" title="Copy command">📋</button>
+        </div>
+      </div>
+
+      <!-- Terminal Simulator -->
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="term-dot red"></span>
+          <span class="term-dot yellow"></span>
+          <span class="term-dot green"></span>
+          <span class="term-title">PowerShell - winclean scan</span>
+        </div>
+        <div class="terminal-body"><span class="term-cyan">
+  ██╗    ██╗██╗███╗   ██╗ ██████╗██╗     ███████╗ █████╗ ███╗   ██╗
+  ██║    ██║██║████╗  ██║██╔════╝██║     ██╔════╝██╔══██╗████╗  ██║
+  ██║ █╗ ██║██║██╔██╗ ██║██║     ██║     █████╗  ███████║██╔██╗ ██║
+  ██║███╗██║██║██║╚██╗██║██║     ██║     ██╔══╝  ██╔══██║██║╚██╗██║
+  ╚███╔███╔╝██║██║ ╚████║╚██████╗███████╗███████╗██║  ██║██║ ╚████║
+   ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝</span>
+  <span class="term-gray">             High-Performance Windows Disk Cleanup CLI</span>
+
+────────────────────────────────────────────────────────────────────
+  <span class="term-cyan">OS:</span>         Windows 11 (Build 26200)    <span class="term-green">[ADMIN: STANDARD]</span>
+  <span class="term-cyan">Mode:</span>       <span class="term-green">DRY RUN (SAFE)</span>              <span class="term-gray">(Cutoff: 7 days)</span>
+  <span class="term-cyan">Drive C:</span>    <span class="term-cyan">18.4 GB free</span> of 308.2 GB (6.0% free)
+               [████████████████████████████░░] 289.8 GB used
+────────────────────────────────────────────────────────────────────
+
+<span class="term-cyan">[SCAN]</span> Scanning 31 target locations...
+<span class="term-green">✔</span> Found <span class="term-yellow">2,217 eligible files</span> totaling <span class="term-green">963.87 MB</span> reclaimable space.
+
+<span class="term-gray">🔍 [DRY-RUN] DRY RUN ONLY — No files were deleted.
+ℹ To delete candidate files, re-run with: winclean --apply
+ℹ Or run interactive review: winclean -i</span></div>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-grid">
+      <div class="card">
+        <div class="card-icon">🛡️</div>
+        <h3>Zero-Risk Safety</h3>
+        <p>Never touches drive roots, personal folders (Desktop, Documents, Downloads), or system critical directories. Symbolic links and junctions are blocked.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎛️</div>
+        <h3>Folder-by-Folder Check</h3>
+        <p>Review every target folder interactively with file counts and sizes before deletion, or prompt for confirmation on every folder with <code>-p</code>.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Live Progress Bars</h3>
+        <p>Dual real-time CLI progress bars tracking scanned targets, deleted files count, formatted bytes freed, ETA, and active file paths.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>Comprehensive Browsers</h3>
+        <p>Cleans Brave (all channels), Chrome, Edge, Arc, Vivaldi, Firefox, Waterfox, Opera. Strictly preserves cookies, history, and logins.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🪟</div>
+        <h3>Windows Update & Logs</h3>
+        <p>Cleans leftover <code>$WINDOWS.~BT</code>, <code>$WINDOWS.~WS</code>, Delivery Optimization, and multi-gigabyte CBS and DISM servicing logs.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Fast & Lightweight</h3>
+        <p>Scans 20,000+ files in seconds with asynchronous streams. Pre-compiled to modern ESM with strict TypeScript 5.7 typing.</p>
+      </div>
+    </section>
+
+    <!-- Target Explorer -->
+    <section class="explorer-section" id="targets">
+      <div class="section-title">
+        <h2>Supported Cleanup Targets</h2>
+        <p>Organized into granular categories with individual directory arrays</p>
+      </div>
+
+      <div class="tab-nav">
+        <button class="tab-btn active" data-target="tab-temp">Temporary Files</button>
+        <button class="tab-btn" data-target="tab-browsers">Web Browsers</button>
+        <button class="tab-btn" data-target="tab-dev">Dev Caches</button>
+        <button class="tab-btn" data-target="tab-winupdate">Windows Update</button>
+        <button class="tab-btn" data-target="tab-dumps">Crash Dumps</button>
+        <button class="tab-btn" data-target="tab-apps">Apps & IDE</button>
+      </div>
+
+      <!-- Tab Temp -->
+      <div class="tab-content active" id="tab-temp">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Target Name</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User Temporary Files</td>
+              <td><span class="path-code">%TEMP%</span></td>
+              <td>System user temporary directory</td>
+            </tr>
+            <tr>
+              <td>Local AppData Temp</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Temp</span></td>
+              <td>Application temporary runtime files</td>
+            </tr>
+            <tr>
+              <td>Windows System Temp</td>
+              <td><span class="path-code">C:\Windows\Temp</span></td>
+              <td>System-wide temp directory (Requires Admin)</td>
+            </tr>
+            <tr>
+              <td>DirectX Shader Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\D3DSCache</span></td>
+              <td>DirectX compiled graphics shaders</td>
+            </tr>
+            <tr>
+              <td>NVIDIA GPU Shader Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\NVIDIA\DXCache</span></td>
+              <td>NVIDIA graphics compiled shaders</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab Browsers -->
+      <div class="tab-content" id="tab-browsers">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Browser</th>
+              <th>Target Path</th>
+              <th>Safely Cleaned</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brave Browser (Stable, Beta, Nightly)</td>
+              <td><span class="path-code">%LOCALAPPDATA%\BraveSoftware\Brave-Browser*\User Data</span></td>
+              <td>Cache, Code Cache, GPUCache, DawnCache (Cookies preserved)</td>
+            </tr>
+            <tr>
+              <td>Google Chrome (Stable, Beta, Canary)</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Google\Chrome*\User Data</span></td>
+              <td>Web cache, V8 code cache, shader cache</td>
+            </tr>
+            <tr>
+              <td>Microsoft Edge (Stable, Beta, Dev, Canary)</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Microsoft\Edge*\User Data</span></td>
+              <td>Web cache, GPU cache, shader cache</td>
+            </tr>
+            <tr>
+              <td>Arc Browser & Vivaldi</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Arc, %LOCALAPPDATA%\Vivaldi</span></td>
+              <td>Chromium runtime cache and GPU cache</td>
+            </tr>
+            <tr>
+              <td>Mozilla Firefox & Waterfox</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Mozilla\Firefox\Profiles</span></td>
+              <td>cache2, startupCache, jumpListCache</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab Dev -->
+      <div class="tab-content" id="tab-dev">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Package Manager</th>
+              <th>Cache Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>npm Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\npm-cache &amp; ~/.npm/_cacache</span></td>
+              <td>Node package tarballs and index cache</td>
+            </tr>
+            <tr>
+              <td>Yarn Cache (v1 &amp; Berry)</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Yarn\Cache &amp; yarn\berry\cache</span></td>
+              <td>Yarn downloaded packages</td>
+            </tr>
+            <tr>
+              <td>pnpm Metadata Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\pnpm-cache</span></td>
+              <td>pnpm metadata and index</td>
+            </tr>
+            <tr>
+              <td>Pip (Python) Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\pip\cache</span></td>
+              <td>Python pip wheel and HTTP cache</td>
+            </tr>
+            <tr>
+              <td>NuGet (.NET) Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\NuGet\v3-cache</span></td>
+              <td>.NET package download cache</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab Windows Update -->
+      <div class="tab-content" id="tab-winupdate">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Target</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Windows Update Downloads</td>
+              <td><span class="path-code">C:\Windows\SoftwareDistribution\Download</span></td>
+              <td>Downloaded update installer packages</td>
+            </tr>
+            <tr>
+              <td>Delivery Optimization</td>
+              <td><span class="path-code">C:\Windows\SoftwareDistribution\DeliveryOptimization\Cache</span></td>
+              <td>P2P update delivery cache</td>
+            </tr>
+            <tr>
+              <td>CBS Servicing Logs</td>
+              <td><span class="path-code">C:\Windows\Logs\CBS</span></td>
+              <td>Component Based Servicing persist logs (often 5GB+)</td>
+            </tr>
+            <tr>
+              <td>Major Upgrade Temp</td>
+              <td><span class="path-code">C:\$WINDOWS.~BT &amp; C:\$WINDOWS.~WS</span></td>
+              <td>Leftover folders from feature upgrades</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab Dumps -->
+      <div class="tab-content" id="tab-dumps">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Target</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User Crash Dumps</td>
+              <td><span class="path-code">%LOCALAPPDATA%\CrashDumps</span></td>
+              <td>Application crash memory dump files</td>
+            </tr>
+            <tr>
+              <td>WER Report Archive</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Microsoft\Windows\WER\ReportArchive</span></td>
+              <td>Windows Error Reporting telemetry queue &amp; archive</td>
+            </tr>
+            <tr>
+              <td>Windows Minidumps</td>
+              <td><span class="path-code">C:\Windows\Minidump</span></td>
+              <td>Kernel and BSOD crash minidumps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tab Apps -->
+      <div class="tab-content" id="tab-apps">
+        <table class="targets-table">
+          <thead>
+            <tr>
+              <th>Application</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>VS Code Cache &amp; Logs</td>
+              <td><span class="path-code">%APPDATA%\Code\Cache, CachedData, logs</span></td>
+              <td>Visual Studio Code runtime caches and old logs</td>
+            </tr>
+            <tr>
+              <td>Discord Cache</td>
+              <td><span class="path-code">%APPDATA%\discord\Cache, GPUCache</span></td>
+              <td>Discord desktop media and GPU cache</td>
+            </tr>
+            <tr>
+              <td>Spotify Cache</td>
+              <td><span class="path-code">%LOCALAPPDATA%\Spotify\Storage, Data</span></td>
+              <td>Spotify local audio cache</td>
+            </tr>
+            <tr>
+              <td>Slack &amp; Vite</td>
+              <td><span class="path-code">%APPDATA%\Slack, %LOCALAPPDATA%\vite</span></td>
+              <td>Slack app cache and Vite build cache</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Safety Section -->
+    <section class="explorer-section" id="safety">
+      <div class="section-title">
+        <h2>Multi-Layered Safety Guarantees</h2>
+        <p>Built from the ground up to prevent data loss</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="card">
+          <div class="card-icon">🚫</div>
+          <h3>Protected Directories</h3>
+          <p>Never touches user profile personal roots (<code>Desktop</code>, <code>Documents</code>, <code>Downloads</code>, <code>Pictures</code>, <code>Videos</code>, <code>Music</code>) or system folders (<code>System32</code>, <code>Program Files</code>).</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔗</div>
+          <h3>Symlink &amp; Junction Guard</h3>
+          <p>Never follows NTFS directory junctions or symbolic links, avoiding recursive traversal and unintended data deletion.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⏱️</div>
+          <h3>Immediate Pre-Delete Re-Check</h3>
+          <p>Right before unlinking, files are verified to ensure they have not been modified after the age cutoff and are still regular files.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Released under the <a href="https://github.com/vivekkushwaha66/windows-cleaner-cli/blob/main/LICENSE">MIT License</a>.
+        Created by <a href="https://github.com/vivekkushwaha66">Vivek Kushwaha</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
